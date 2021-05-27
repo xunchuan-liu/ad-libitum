@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@google-cloud/language": "^4.2.3",
+    "@material-ui/core": "^4.11.4",
     "@remotion/player": "^2.1.4",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -11,6 +13,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "colornames": "^1.1.1",
     "deepai": "^1.0.17",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

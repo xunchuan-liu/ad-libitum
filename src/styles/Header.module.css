@@ -1,0 +1,14 @@
+.header {
+    background-color: #8a2ce2;    
+    height: 10vh;
+    padding: 1px;
+    display: flex;
+    align-items: center;
+}
+
+.heading {
+    margin-left: 15px;    
+    font-family: 'Shadows Into Light';
+    color: #bbd839;    
+    letter-spacing: 4px;
+}
