@@ -1,11 +1,32 @@
+.container {
+    background-color: #a2e0ddcc;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;    
+    height: 100%;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.buttonContainer {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;    
+}
+
 .selector {
     display: flex;
     flex: 1;
     flex-direction: column;
     align-items: center;
     height: 100%;
-    justify-content: space-around;
-    background-color: #a2e0ddcc;    
+    width: 100%;
+    justify-content: space-around;        
 }
 
 .heading {
@@ -18,6 +39,17 @@
     width: 50%;
 }
 
+.initialField {
+    width: 80%;
+}
+
 .goButton {
     width: 50%;    
+}
+
+.groupButton {
+    margin: 12px 0 !important;
+    color: red;
+    width: 50%;
+    
 }

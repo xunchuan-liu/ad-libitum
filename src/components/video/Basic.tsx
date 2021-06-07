@@ -1,16 +1,21 @@
+import { useState, useEffect } from 'react';
 import {spring, useCurrentFrame, useVideoConfig} from 'remotion';
 
 export const Basic: React.FC<{
-	name: string;
-  	color: string;
-	animal: string;
-  	place: string;
-}> = ({name, color, animal, place}) => {
+	currentSentence: string;
+	readyToAnimate: boolean;  	
+}> = ({currentSentence, readyToAnimate}) => {
+  const [text, setText] = useState<string[]>([]);
   const frame = useCurrentFrame();
-  const videoConfig = useVideoConfig();
+  const videoConfig = useVideoConfig();  
 
-  const text = `Bad news, ${name}. Your ${color} ${animal} just escaped to the ${place}!`;
-  const splitText = text.split(' ').map((t) => ` ${t} `);
+  // update the animated text only after user submits their inputs
+  useEffect(() => {	  		
+	  if (readyToAnimate) {		  	  	
+		const splitText = currentSentence.split(' ').map((t) => ` ${t} `);
+	  	setText(splitText);		
+	  }
+  }, [currentSentence, readyToAnimate])  
 
   return (
     <div style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -26,25 +31,24 @@ export const Basic: React.FC<{
 				width: '100%',
 			}}
 		>
-			{splitText.map((t, i) => {
+			{text.map((t, i) => {
 				return (
 					<span
-						key={t}
-						style={{
-							color: color,
+						key={i}
+						style={{							
 							marginLeft: 10,
 							marginRight: 10,
-							transform: frame < videoConfig.durationInFrames - 1 
-								? `scale(${spring({
-									fps: videoConfig.fps,
-									frame: frame - i * 7,
-									config: {
-										damping: 100,
-										stiffness: 200,
-										mass: 0.5,
-									},
-								})})` 
-								: 'scale(0)',
+							transform: `scale(${spring({
+								fps: videoConfig.fps,
+								from: 0,
+								to: 1,
+								frame: frame - i * 5,
+								config: {
+									damping: 100,
+									stiffness: 200,
+									mass: 0.5,
+								},
+							})})`,								
 							display: 'inline-block',
 						}}
 					>
